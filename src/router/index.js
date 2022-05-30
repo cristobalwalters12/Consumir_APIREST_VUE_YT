@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Dashboard from '../views/Dashboard.vue';
-
+import botonera from '../views/botonera.vue'
 import Editar from '../views/Editar.vue';
 import Nuevo from '../views/Nuevo.vue';
  
@@ -29,6 +29,11 @@ const routes = [
     path: '/nuevo',
     name: 'Nuevo',
     component: Nuevo
+  },
+  {
+    path: '/botonera',
+    name: 'botonera',
+    component: botonera
   }
 ]
 

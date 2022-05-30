@@ -4,27 +4,27 @@
 
             <div class="container izquierda">
 
-                <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo paciente</button>
+                <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo Condominio</button>
                 <br><br>
 
 
                 <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">TELEFONO</th>
-                        <th scope="col">CORREO</th>
+                        <th scope="col">ID </th>
+                        <th scope="col"> Nombre de Residente</th>
+                        <th scope="col"> Telefono</th>
+                        <th scope="col"> Condominio</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="paciente in Listapacientes" :key="paciente.PacienteId" v-on:click="editar(paciente.PacienteId)">
-                        <th scope="row">{{ paciente.PacienteId}}</th>
-                        <td>{{ paciente.Nombre }}</td>
-                        <td>{{ paciente.DNI }}</td>
-                        <td>{{ paciente.Telefono }}</td>
-                        <td>{{ paciente.Correo }}</td>
+                    <tr v-for="residente in residentes" :key="residente.id" v-on:click="editar(residente.id)">
+                        <th scope="row">{{ residente.id}}</th>
+                        <td>{{ residente.nombreResidentes }}</td>
+                        <td>{{ residente.telefono }}</td>
+                        <td>{{ residente.condominio_id }}</td>
+                     
                     </tr>
             
                 </tbody>
@@ -43,8 +43,8 @@ export default {
     name:"Dashboard",
     data(){
         return {
-            Listapacientes:null,
-            pagina:1
+            residentes:null,
+          
         }
     },
     components:{
@@ -60,9 +60,9 @@ export default {
             }
     },
     mounted:function(){
-        let direccion = "http://solodata.es/pacientes?page=" + this.pagina;
+        let direccion = "http://127.0.0.1:8000/api/residentes/" ;
         axios.get(direccion).then( data =>{
-            this.Listapacientes = data.data;
+            this.residentes = data.data;
         });
     }
 }
